@@ -1,0 +1,13 @@
+import serial
+import time
+arduinno = serial.Serial('/dev/ttyACM0' , 9600, timeout = 3.0)
+txt = ''
+while True:
+var = input ("INTRODUCIR COMANDO:   ")
+arduino.write(var.encode())
+time.sleep (0.1)
+while arduino.inWriting() > 0:
+txt = arduino.read (3)
+print (txt)
+txt = ''
+arduino.close
