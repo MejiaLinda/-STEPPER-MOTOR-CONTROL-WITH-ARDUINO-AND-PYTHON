@@ -1,0 +1,42 @@
+#include <Stepper.h>
+char dato;
+int valor;
+stepper motor1 (2048, 8, 10, 9, 11);
+
+void setup()
+{
+pinMode (13, OUTPUT);
+motor1.setSpeed(2);
+Serial.begin(9600);
+}
+void loop()
+{
+if (Serial.available()>0)
+{
+dato = Serial.read();
+if (dato =='A')
+
+{
+digitalWrite(13, HIGH);
+valor = analogRead(0);
+Serial.print(valor);
+motro1.step (512);
+digitalWrite (8, LOW);
+digitalWrite (9, LOW);
+digitalWrite (10, LOW);
+digitalWrite (11, LOW);
+delay (1000);
+}
+if (dato =='B')
+{
+motor1.step (-512);
+digitalWrite (13, LOW);
+digitalWrite (8, LOW);
+digitalWrite (9, LOW);
+digitalWrite (10, LOW);
+digitalWrite (11, LOW);
+delay (1000);
+}
+}
+}
+
